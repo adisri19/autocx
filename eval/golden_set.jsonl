@@ -1,0 +1,200 @@
+{"id": 1, "message": "Where is my package? The tracking number 998877 has not updated for 3 days.", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Routine tracking inquiry"}
+{"id": 2, "message": "Can you check the delivery status of order #112-9876543-1234567?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Order status with order ID"}
+{"id": 3, "message": "Has my package shipped yet? Ordered it early this morning.", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Inquiry about shipment status"}
+{"id": 4, "message": "I received a notification that my order was shipped, what carrier was used?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Carrier details request"}
+{"id": 5, "message": "Can you tell me the estimated delivery window for my package today?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Delivery window request"}
+{"id": 6, "message": "Tracking shows departed facility in Kentucky, when should it reach California?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Transit progress question"}
+{"id": 7, "message": "Is there an update on order #701-445566-000111?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Order status check"}
+{"id": 8, "message": "I cannot find the tracking link on my order confirmation email.", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Tracking link retrieval"}
+{"id": 9, "message": "Does order #334455 require a signature upon delivery?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Signature requirement check"}
+{"id": 10, "message": "The tracking says out for delivery, will it arrive before 5 PM?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "ETA inquiry"}
+{"id": 11, "message": "Could you check if my order was dispatched from the warehouse?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Dispatch inquiry"}
+{"id": 12, "message": "My delivery address was updated, did the tracking reflect the new address?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Address update check on shipment"}
+{"id": 13, "message": "Tracking says package transferred to local post office, what does that mean?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Status explanation"}
+{"id": 14, "message": "Can I get the tracking code for my recent replacement item?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Replacement tracking request"}
+{"id": 15, "message": "Is my package still on schedule for tomorrow's delivery?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Schedule confirmation"}
+{"id": 16, "message": "What time does your delivery driver usually deliver to zip code 94107?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Carrier delivery time question"}
+{"id": 17, "message": "Can you confirm if order #102-304050 was cancelled or if it is still shipping?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Status verification"}
+{"id": 18, "message": "Tracking shows in transit between sorting hubs, is everything normal?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Standard in-transit question"}
+{"id": 19, "message": "I ordered 3 items in one cart, will they arrive in separate packages?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Consolidated shipping inquiry"}
+{"id": 20, "message": "Can I track my delivery on a live map?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Live tracking query"}
+{"id": 21, "message": "How long does standard ground shipping usually take to arrive?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "General transit duration inquiry"}
+{"id": 22, "message": "Order status says 'preparing for shipment' for 48 hours, is that normal?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Processing status question"}
+{"id": 23, "message": "Can I get an SMS notification when the package is delivered?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Notification request"}
+{"id": 24, "message": "Can you track package with tracking number TBA987654321000?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Carrier TBA tracking"}
+{"id": 25, "message": "Is order #555-888-222 delivered to the front door or locker?", "true_intent": "ORDER_STATUS", "expected_escalation": false, "notes": "Delivery drop location"}
+{"id": 26, "message": "I returned my defective coffee maker last Tuesday, when will I receive my refund?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Return refund timeline"}
+{"id": 27, "message": "I was billed twice on my credit card for order #123-456. Please refund the duplicate charge immediately.", "true_intent": "REFUND_REQUEST", "expected_escalation": true, "notes": "Billing dispute / duplicate charge"}
+{"id": 28, "message": "Cancelled my order within 5 minutes of placing it, how long for the money back?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Cancelled order refund"}
+{"id": 29, "message": "The package never showed up. I want a full refund issued back to my Visa.", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Non-delivery refund request"}
+{"id": 30, "message": "Can I get a refund credited to my gift card balance instead of original card?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Refund payment method"}
+{"id": 31, "message": "I returned the shoes in store, why hasn't my bank account credited the $85?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Store return refund inquiry"}
+{"id": 32, "message": "You charged me for an annual Prime membership I never authorized. Refund me immediately or I will initiate a chargeback!", "true_intent": "REFUND_REQUEST", "expected_escalation": true, "notes": "Unauthorized charge & chargeback warning"}
+{"id": 33, "message": "My refund is $20 short of what I originally paid, why was a restocking fee deducted?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Restocking fee dispute"}
+{"id": 34, "message": "Item arrived damaged, do I have to send it back to get a full refund?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Damaged item refund policy"}
+{"id": 35, "message": "I sent the return parcel with tracking #94001, tracking shows delivered to warehouse, where is my refund?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Warehouse return receipt refund"}
+{"id": 36, "message": "Can you cancel this pending charge and refund my debit card?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Pending charge refund"}
+{"id": 37, "message": "It has been over 14 business days since you confirmed my refund, where is my money?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Delayed refund inquiry"}
+{"id": 38, "message": "I returned 2 items from the same box but only received a refund for 1.", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Partial refund dispute"}
+{"id": 39, "message": "I bought this item on promotion, if I return it how much will be refunded?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Promotional pricing refund calculation"}
+{"id": 40, "message": "I will file a fraud report with my bank if this $300 bogus charge is not refunded right now.", "true_intent": "REFUND_REQUEST", "expected_escalation": true, "notes": "Fraud threat / high monetary value"}
+{"id": 41, "message": "Where can I see the credit note for my processed refund?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Credit note request"}
+{"id": 42, "message": "How do I request a refund for a damaged digital book download?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Digital goods refund"}
+{"id": 43, "message": "The return label printed with the wrong return address, can I still get my refund?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Return label logistics"}
+{"id": 44, "message": "I was told a refund was issued yesterday, can you provide the transaction reference ID?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Refund transaction ID request"}
+{"id": 45, "message": "Your driver dropped the box in the rain and ruined the electronics. I demand an immediate refund.", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Ruined item refund demand"}
+{"id": 46, "message": "Can I get a cash refund if I pay by cash on delivery?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "COD refund query"}
+{"id": 47, "message": "My bank account is closed, how will you issue my pending refund?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Closed bank account refund handling"}
+{"id": 48, "message": "Is the return shipping fee refunded if the product arrived broken?", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Return shipping fee inquiry"}
+{"id": 49, "message": "I need a refund for shipping fees because two-day shipping took 7 days.", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Shipping fee reimbursement"}
+{"id": 50, "message": "Please issue a refund for order #999-111-222, I found a cheaper price elsewhere.", "true_intent": "REFUND_REQUEST", "expected_escalation": false, "notes": "Price difference return request"}
+{"id": 51, "message": "I forgot my account password and the reset link is not arriving in my inbox.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Password reset failure"}
+{"id": 52, "message": "I am not receiving the 6-digit OTP verification code on my phone to log in.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "2FA OTP failure"}
+{"id": 53, "message": "My account was locked due to too many failed password attempts, please help me unlock it.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Account lockout"}
+{"id": 54, "message": "Someone unauthorized changed the primary email on my account, I think I was hacked!", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": true, "notes": "Account compromise / security breach"}
+{"id": 55, "message": "How can I update the phone number linked to my login credentials?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Phone number update"}
+{"id": 56, "message": "I cannot sign in using my Apple ID anymore, it gives an authorization error.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Third-party auth error"}
+{"id": 57, "message": "How do I delete my account and permanently remove all my stored payment cards?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Account deletion & data privacy"}
+{"id": 58, "message": "I suspect fraudulent purchases on my account from another state, lock my account now!", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": true, "notes": "Active fraud / account takeover"}
+{"id": 59, "message": "Why is my account asking me to upload a government ID to verify my identity?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Identity verification query"}
+{"id": 60, "message": "How do I merge two accounts that use different email addresses?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Account merge request"}
+{"id": 61, "message": "The verification SMS is being sent to my old phone number that I no longer have access to.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Lost phone 2FA recovery"}
+{"id": 62, "message": "Can I set up an authenticator app instead of SMS for two-factor authentication?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "2FA settings change"}
+{"id": 63, "message": "Every time I log in, it forces me into a verification loop that never completes.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Auth loop bug"}
+{"id": 64, "message": "How do I change my billing address on file for my saved credit cards?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Billing address update"}
+{"id": 65, "message": "I received an email stating my password was changed, but I did not do it!", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": true, "notes": "Unauthorized credential change"}
+{"id": 66, "message": "Can multiple family members share one login profile?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Account sharing question"}
+{"id": 67, "message": "Why does it say 'account suspended due to terms violation' when I try to log in?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": true, "notes": "Account suspension"}
+{"id": 68, "message": "How do I sign out of all active devices currently logged into my account?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Session termination query"}
+{"id": 69, "message": "I cannot update my birthday or legal name on my profile.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Profile info update"}
+{"id": 70, "message": "My account is linked to a business tax ID that needs to be updated.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Business tax ID change"}
+{"id": 71, "message": "Is there a way to recover an account if I forgot both the email and password?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Complete credential loss"}
+{"id": 72, "message": "My passkey is not working on my Mac browser.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Passkey authentication"}
+{"id": 73, "message": "Why was a new credit card added to my wallet that does not belong to me?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": true, "notes": "Suspicious wallet activity"}
+{"id": 74, "message": "How do I enable biometric Face ID login on the mobile app?", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "Biometric login inquiry"}
+{"id": 75, "message": "I need to transfer my purchase history to a new email address.", "true_intent": "ACCOUNT_ISSUE", "expected_escalation": false, "notes": "History transfer query"}
+{"id": 76, "message": "My package was supposed to arrive yesterday by 8 PM, why is it delayed?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Missed delivery window"}
+{"id": 77, "message": "I paid extra for Priority Next-Day shipping and it has been 4 days without delivery.", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Paid expedited shipping delay"}
+{"id": 78, "message": "Why has my package been stuck at the local distribution hub for three days without moving?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Hub standstill delay"}
+{"id": 79, "message": "My order is 10 days late and nobody is giving me an explanation!", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Severe delay grievance"}
+{"id": 80, "message": "The tracking status changed from 'Arriving Today' to 'Delivery Delayed' with no new date.", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Indefinite delay notification"}
+{"id": 81, "message": "Carrier missed delivery appointment for the third time in a row, this is unacceptable.", "true_intent": "SHIPPING_DELAY", "expected_escalation": true, "notes": "Repeated carrier failures"}
+{"id": 82, "message": "It has been over two weeks since shipment, is my package lost in transit?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Potential lost in transit delay"}
+{"id": 83, "message": "Why does standard delivery take over two weeks to reach my address?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Slow shipping grievance"}
+{"id": 84, "message": "I needed this birthday gift delivered on time for today's party, now it is ruined!", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Time-sensitive delivery delay"}
+{"id": 85, "message": "The tracking says 'delay due to severe weather', how long does weather delay usually take?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Weather delay inquiry"}
+{"id": 86, "message": "Package delayed due to address issue, but my address on the order is 100% correct.", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Address exception delay"}
+{"id": 87, "message": "Driver claimed an attempted delivery at 2 PM, but I was home all day and nobody rang the bell!", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "False delivery attempt complaint"}
+{"id": 88, "message": "Why did my parcel get rerouted to another city hundreds of miles away?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Misrouted parcel delay"}
+{"id": 89, "message": "Can you expedite the delayed package so it arrives by tomorrow morning?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Expedite request for delayed parcel"}
+{"id": 90, "message": "My perishable food items are delayed by 3 days, they will spoil before arrival.", "true_intent": "SHIPPING_DELAY", "expected_escalation": true, "notes": "Perishable goods delay / spoilage risk"}
+{"id": 91, "message": "The courier stated 'mechanical delay with delivery vehicle', will it be delivered today?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Mechanical breakdown delay"}
+{"id": 92, "message": "My order shows arriving next Monday, but your website promised Friday delivery when I bought it.", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Discrepancy in delivery commitment"}
+{"id": 93, "message": "Is there any way to pick up the delayed package directly from the sorting hub?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Hub pickup inquiry"}
+{"id": 94, "message": "Every single order sent to my address arrives late, what is wrong with your logistics?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Chronic logistics complaint"}
+{"id": 95, "message": "The tracking says delayed in customs clearance, do I need to pay import duties?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Customs clearance delay"}
+{"id": 96, "message": "Tracking has not shown any movement since October 12, is it still coming?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Dormant tracking delay"}
+{"id": 97, "message": "Why was my delivery date pushed back twice in the same week?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Multiple rescheduled dates"}
+{"id": 98, "message": "I took unpaid leave from work to sign for this delivery and the driver never showed up!", "true_intent": "SHIPPING_DELAY", "expected_escalation": true, "notes": "Economic loss from missed delivery"}
+{"id": 99, "message": "Can I change the delivery speed of an order that is currently delayed?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Speed modification request"}
+{"id": 100, "message": "What compensation do you offer for Prime guaranteed delivery delays?", "true_intent": "SHIPPING_DELAY", "expected_escalation": false, "notes": "Late delivery compensation request"}
+{"id": 101, "message": "The package arrived completely crushed and the glass teapot inside was in a million pieces.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Damaged goods on arrival"}
+{"id": 102, "message": "Your customer service representative hung up on me while I was explaining my problem. Unacceptable!", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Rude agent conduct / customer mistreatment"}
+{"id": 103, "message": "I ordered a size 10 black running shoe and received a size 6 red high heel. Complete incompetence.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Completely wrong item shipped"}
+{"id": 104, "message": "The electronic gadget was clearly used and had fingerprints all over it, sold as new!", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Used item sold as new"}
+{"id": 105, "message": "The driver threw my package over the fence and my dog chewed it up!", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Negligent delivery driver / damaged property"}
+{"id": 106, "message": "This product is of shockingly low quality, looks nothing like the pictures on your website.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Misleading product quality"}
+{"id": 107, "message": "The delivery driver was aggressive and used abusive language towards my elderly mother.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Driver verbal abuse / safety concern"}
+{"id": 108, "message": "The packaging was soaked in oil from an unsealed bottle inside the same box.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Spilled liquid damage"}
+{"id": 109, "message": "I have been transferred to 5 different representatives and nobody has solved my issue!", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Repeated transfer frustration"}
+{"id": 110, "message": "Missing accessories from the manufacturer sealed box, parts were stolen.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Missing components"}
+{"id": 111, "message": "The expiration date on the baby formula delivered today was 3 months ago! This is dangerous!", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Expired infant food / health hazard"}
+{"id": 112, "message": "Your company policies are anti-consumer and completely ridiculous.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "General corporate grievance"}
+{"id": 113, "message": "Item broke on the first day of light usage, total waste of money.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Defective product complaint"}
+{"id": 114, "message": "I received an empty cardboard box with the tape sliced open.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Stolen contents / pilfered parcel"}
+{"id": 115, "message": "Driver left my expensive laptop right on the sidewalk in plain public view in the rain.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Reckless delivery / high value risk"}
+{"id": 116, "message": "Your live chat support system is useless and keeps disconnecting.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Chat system frustration"}
+{"id": 117, "message": "The clothing arrived with a terrible chemical odor and stains on the fabric.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Defective apparel complaint"}
+{"id": 118, "message": "I was promised a follow-up callback within 2 hours and nobody ever called me back.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Broken callback promise"}
+{"id": 119, "message": "The package was delivered to the wrong building down the street.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Misdelivered address complaint"}
+{"id": 120, "message": "The product manual is in a foreign language and no English version was included.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Missing localization/manual"}
+{"id": 121, "message": "I was charged for gift wrapping and the item arrived in a plain tattered box without gift wrap.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Unfulfilled paid service complaint"}
+{"id": 122, "message": "The delivery person drove over my flower garden and crushed my plants!", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": true, "notes": "Property damage by delivery driver"}
+{"id": 123, "message": "The refurbished item has deep scratches and dents all over the casing.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Cosmetic damage on renewed item"}
+{"id": 124, "message": "The promo code advertised on your homepage does not apply at checkout.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Promotional banner error"}
+{"id": 125, "message": "Your website reviews are obviously fake and misleading customers.", "true_intent": "GENERAL_COMPLAINT", "expected_escalation": false, "notes": "Review credibility complaint"}
+{"id": 126, "message": "Every time I click on 'Proceed to Checkout', the page reloads with a 500 server error.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Checkout HTTP 500 error"}
+{"id": 127, "message": "Your mobile app crashes immediately upon opening on my iPhone running iOS 18.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "App crash on startup"}
+{"id": 128, "message": "The search bar does not return any results regardless of what keywords I type.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Search engine failure"}
+{"id": 129, "message": "I am unable to remove an item from my shopping cart, the delete icon does nothing.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Shopping cart UI glitch"}
+{"id": 130, "message": "Payment gateway keeps declining my card with error code 'ERR_PAY_GATEWAY_TIMEOUT'.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Payment gateway timeout"}
+{"id": 131, "message": "The product images are not loading on desktop browsers, showing broken image icons.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Image CDN failure"}
+{"id": 132, "message": "When I apply a valid coupon code, the discount displays for a second and disappears.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Coupon code application bug"}
+{"id": 133, "message": "The tracking map on the mobile app is just a blank white screen.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "In-app tracking map failure"}
+{"id": 134, "message": "Cannot select delivery address, the radio buttons are frozen and unresponsive.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Form input unresponsiveness"}
+{"id": 135, "message": "Your website is stuck in an infinite redirect loop between login and home page.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Redirect loop issue"}
+{"id": 136, "message": "The 'Buy Now' one-click ordering button does not respond to mouse clicks.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "One-click ordering UI bug"}
+{"id": 137, "message": "I cannot upload a photo of the damaged item on the return claim page, upload fails at 99%.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "File upload failure"}
+{"id": 138, "message": "The mobile app keeps logging me out every 30 seconds while browsing products.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Session expiration bug"}
+{"id": 139, "message": "Prices in my cart are showing in British Pounds even though my country is set to United States.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Currency localization glitch"}
+{"id": 140, "message": "The customer support chat window fails to connect to the server with error 'WebSocket closed'.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "WebSocket connection error"}
+{"id": 141, "message": "Notifications are not appearing on Android even with all permissions enabled.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Push notification failure"}
+{"id": 142, "message": "Cannot download my VAT invoice PDF, clicking the download button returns a 404.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Invoice PDF 404 error"}
+{"id": 143, "message": "The filter by price slider on search results page is completely broken.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Slider UI widget error"}
+{"id": 144, "message": "Voice ordering via smart assistant is failing to place orders in my cart.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Voice interface technical glitch"}
+{"id": 145, "message": "The website is extremely slow, taking over 20 seconds to load a single product page.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Performance latency issue"}
+{"id": 146, "message": "Two-step verification screen does not accept pasted security codes from clipboard.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Clipboard input handling bug"}
+{"id": 147, "message": "The barcode scanner in the app is displaying a black camera view.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Camera permission/scanner failure"}
+{"id": 148, "message": "Submitting the product review form throws a JavaScript console error.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Client-side JS exception"}
+{"id": 149, "message": "Wishlist items are not syncing between my tablet and phone.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Data sync issue across devices"}
+{"id": 150, "message": "Order history page pagination button for page 2 does nothing.", "true_intent": "TECHNICAL_ISSUE", "expected_escalation": false, "notes": "Pagination link failure"}
+{"id": 151, "message": "Thank you so much to agent David for helping me retrieve my lost package, fantastic service!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Agent praise"}
+{"id": 152, "message": "The delivery was super fast, arrived two days ahead of schedule! Great job team!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Fast delivery compliment"}
+{"id": 153, "message": "Your customer support team is always so polite and quick to help. Really appreciate it!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Support team appreciation"}
+{"id": 154, "message": "I had a seamless return experience today at the locker, kudos to your engineering team!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Return experience praise"}
+{"id": 155, "message": "Thanks for the quick refund processing, best service on the internet.", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Prompt refund gratitude"}
+{"id": 156, "message": "The packaging was so neat and protective, everything arrived in pristine condition. Thank you!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Quality packaging praise"}
+{"id": 157, "message": "Shoutout to the friendly delivery driver who carefully placed my package behind the porch pillar.", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Driver compliment"}
+{"id": 158, "message": "Just wanted to say thank you for resolving my billing question so quickly over Twitter.", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Twitter support praise"}
+{"id": 159, "message": "Outstanding customer experience as always. You guys never disappoint!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "General brand compliment"}
+{"id": 160, "message": "Thanks a ton for price matching the monitor for me, saved me $50!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Price match gratitude"}
+{"id": 161, "message": "I love the new app update, the interface is so much smoother and cleaner. Kudos!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "App redesign praise"}
+{"id": 162, "message": "Thank you for helping me track down my anniversary gift in time, you saved the day!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Timely resolution appreciation"}
+{"id": 163, "message": "Your customer service is ten times better than your competitors. Keep it up!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Competitive praise"}
+{"id": 164, "message": "Big thanks to the support rep who patiently walked me through resetting my 2FA.", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Support patience praise"}
+{"id": 165, "message": "I received the replacement unit the very next morning, incredible turnaround speed. Thanks!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Replacement turnaround gratitude"}
+{"id": 166, "message": "Thank you for listening to customer feedback and improving package drop-off options.", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Feedback appreciation"}
+{"id": 167, "message": "The driver was so kind to carry the heavy parcel upstairs for my grandmother, God bless him!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Driver kindness praise"}
+{"id": 168, "message": "Very impressed by how easy it was to change my delivery address mid-transit. Great tech!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Feature praise"}
+{"id": 169, "message": "Thanks for keeping me updated with accurate SMS tracking throughout the delivery!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Communication praise"}
+{"id": 170, "message": "I am a customer for life because of how wonderfully you handle warranty claims. Thank you!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Brand loyalty praise"}
+{"id": 171, "message": "Thanks for the holiday discounts and speedy shipping, you made our Christmas special!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Holiday service gratitude"}
+{"id": 172, "message": "I appreciate the courteous and professional assistance I received today.", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Professional service praise"}
+{"id": 173, "message": "Your team turned a stressful situation into an easy fix, thank you so much!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Problem resolution praise"}
+{"id": 174, "message": "Super happy with my purchase and the flawless delivery experience!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Satisfied customer praise"}
+{"id": 175, "message": "Thank you for the quick and helpful response, exactly what I needed!", "true_intent": "COMPLIMENT", "expected_escalation": false, "notes": "Quick response gratitude"}
+{"id": 176, "message": "Hello, how are you today?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Conversational greeting without intent"}
+{"id": 177, "message": "Good morning! Nice weather today.", "true_intent": "OTHER", "expected_escalation": false, "notes": "Small talk greeting"}
+{"id": 178, "message": "Can you tell me who the current CEO of the company is?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Corporate trivia inquiry"}
+{"id": 179, "message": "Do you guys ship products to astronauts on the International Space Station?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Nonsensical humorous question"}
+{"id": 180, "message": "Check out this funny cat video I found online!", "true_intent": "OTHER", "expected_escalation": false, "notes": "Irrelevant social link sharing"}
+{"id": 181, "message": "asdkjhasd 128937129 !@#$%", "true_intent": "OTHER", "expected_escalation": false, "notes": "Random gibberish keystrokes"}
+{"id": 182, "message": "I am writing a high school research paper on e-commerce logistics, can I interview someone?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Academic interview request"}
+{"id": 183, "message": "What is the meaning of life?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Philosophical question"}
+{"id": 184, "message": "Test message 1 2 3 please ignore.", "true_intent": "OTHER", "expected_escalation": false, "notes": "Diagnostic test message"}
+{"id": 185, "message": "Can I invest in your stock directly through Twitter?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Investor relation query"}
+{"id": 186, "message": "Does your company offer corporate sponsorship for our local marathon?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Sponsorship inquiry"}
+{"id": 187, "message": "I want to apply for a job as a software engineer, where do I submit my resume?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Career / recruitment inquiry"}
+{"id": 188, "message": "What time do your corporate headquarters open on Sundays?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Corporate office hours"}
+{"id": 189, "message": "Who designed your company logo?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Branding inquiry"}
+{"id": 190, "message": "Just saying hi to the social media intern running this account!", "true_intent": "OTHER", "expected_escalation": false, "notes": "Casual social banter"}
+{"id": 191, "message": "Can you follow me back on Twitter?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Follow request"}
+{"id": 192, "message": "How many packages do you ship worldwide in a single day?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Public statistics question"}
+{"id": 193, "message": "I saw your TV commercial yesterday, what was the name of the song playing in it?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Advertising media question"}
+{"id": 194, "message": "Tell me a funny joke.", "true_intent": "OTHER", "expected_escalation": false, "notes": "Bot entertainment query"}
+{"id": 195, "message": "Are you a real human or an AI bot?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Bot identity question"}
+{"id": 196, "message": "I found a bug in your open source repository on GitHub.", "true_intent": "OTHER", "expected_escalation": false, "notes": "GitHub repository feedback"}
+{"id": 197, "message": "Can you donate products to our charity auction next month?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Charity donation request"}
+{"id": 198, "message": "What is your favorite color?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Random trivia"}
+{"id": 199, "message": "Can you send me a free sample just to try?", "true_intent": "OTHER", "expected_escalation": false, "notes": "Free sample request"}
+{"id": 200, "message": "Okay thanks bye.", "true_intent": "OTHER", "expected_escalation": false, "notes": "Closing farewell without actionable inquiry"}
