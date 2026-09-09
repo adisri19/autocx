@@ -329,7 +329,7 @@ python -m eval.harness
 
 ---
 
-## "One More Week" Roadmap
+## What I'd Build Next
 
 If allocated an additional engineering sprint, here are the 5 highest-leverage architectural extensions designed to build directly on top of the existing pipeline:
 
