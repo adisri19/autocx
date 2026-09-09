@@ -10,6 +10,16 @@ Autocw is an end-to-end, production-grade AI customer support agent engineered f
 
 ---
 
+## What This Is NOT
+
+To establish clear operational boundaries, Autocw is explicitly **NOT**:
+- **Not a Live Twitter/X API Integration**: It does not connect to Twitter/X streaming or webhook APIs. It ingests, reconstructs, and evaluates historical customer support tweet records offline.
+- **Not a Real-Time Streaming Service**: Responses are generated and returned as structured, synchronous JSON payloads rather than chunked WebSockets or Server-Sent Events (SSE).
+- **Not Multi-Turn Context-Aware in v1**: The current inference engine processes single inbound customer queries independently; it does not maintain active conversational session memory across consecutive turns.
+- **Not Production-Deployed Infrastructure**: It is a modular, reproducible research harness engineered for local developer laptop execution, not a hardened cloud microservice with authentication, rate-limiting gateways, or distributed databases.
+
+---
+
 ## Architecture Overview
 
 ```mermaid
@@ -84,6 +94,59 @@ The system was evaluated against a 200-example stratified golden dataset (`eval/
 - **Reply Quality Dominance**: Autocw achieved **4.64/5.0** overall quality compared to 2.05 for Simple ML and 1.91 for Trivial. Classical verbatim retrieval frequently selects outdated ticket IDs, Twitter handles, and disconnected instructions, whereas Autocw synthesizes context-aware, empathetic, and actionable replies.
 - **Intent Robustness**: Autocw achieved 95.5% accuracy across out-of-distribution phrasing with balanced per-class F1 scores ranging from 0.920 to 1.000.
 - **Human-LLM Judge Alignment**: Pearson correlation of **$r = 0.485$ ($p = 0.0066$)** across 30 human-annotated benchmark cases confirms statistically significant positive alignment between human raters and the Groq LLM-as-a-judge rubric.
+
+---
+
+## What is Misleading About My Headline Number
+
+Transparency and rigorous evaluation require addressing several critical caveats behind the headline benchmark numbers:
+
+1. **Simple ML 1.000 F1 is Data Leakage**:
+   The Simple ML baseline (`TfidfVectorizer` + `LogisticRegression`) reports a perfect 1.000 accuracy and F1 score because it was trained and evaluated on the exact same 200 seed examples from `INTENT_SEED_DATA`. In real out-of-distribution deployments, classical linear models degrade significantly compared to large language models.
+2. **95.5% Intent Accuracy Relies on Synthetic Ground Truth**:
+   The 200 golden set labels reflect deterministic curation and LLM-assisted categorization rather than double-blind, multi-annotator human consensus. As a result, the accuracy metric measures alignment with the predefined taxonomy schema rather than verified ground-truth human satisfaction.
+3. **Trivial Baseline Escalation Accuracy (0.905) is an Artifact of Class Imbalance**:
+   The Trivial baseline achieves a seemingly high 90.5% escalation accuracy simply by *never escalating* (`escalate: False` on 100% of messages). Because only 19 of the 200 golden examples (9.5%) require human escalation, a dummy model that takes no action achieves over 90% accuracy while failing 100% of critical escalation events (False Negative Rate = 1.000).
+4. **LLM-as-a-Judge Shared Model Family Bias**:
+   The evaluation judge runs on Groq using the same model family (`openai/gpt-oss-20b` / Llama3/Qwen) that generated the draft responses. LLMs exhibit documented self-preference biases, grading their own syntactic style, verbosity, and tone more favorably than disjoint human judges.
+5. **Pearson Correlation ($r = 0.485$) Explains Only ~23% of Human Variance**:
+   While the correlation between human ratings and the LLM judge is statistically significant ($p = 0.0066$), an $r$ of 0.485 corresponds to a coefficient of determination ($R^2$) of approximately $0.235$. This means the automated judge explains less than a quarter of the variance observed in human evaluations.
+
+---
+
+## Failure Analysis: Real Failure Modes from the Golden Set
+
+Analysis of the 200-item evaluation run revealed 9 intent classification errors and 15 missed escalations. Below are 5 representative real failure cases extracted directly from [`eval/golden_set.jsonl`](eval/golden_set.jsonl):
+
+### Case 1: Dual-Intent Financial Precedence Failure (Example ID 34)
+- **Customer Message**: *"Item arrived damaged, do I have to send it back to get a full refund?"*
+- **Agent Action**: Classified as `GENERAL_COMPLAINT` with 0.99 confidence. Escalation: `False`.
+- **Expected Action**: Intent `REFUND_REQUEST` (`expected_escalation: False`).
+- **Why It Failed**: The prompt features overlapping signals: "damaged" strongly triggered the `GENERAL_COMPLAINT` keyword pattern, overriding the customer's actual actionable goal ("get a full refund"). Under support triage precedence, financial resolution should supersede defect descriptions.
+
+### Case 2: Regional Delivery Window Policy Inquiry (Example ID 16)
+- **Customer Message**: *"What time does your delivery driver usually deliver to zip code 94107?"*
+- **Agent Action**: Classified as `OTHER` with 0.92 confidence; triggered rule-based escalation (`"Rule-based: Ambiguous or unclassifiable intent ('OTHER')"`).
+- **Expected Action**: Intent `ORDER_STATUS` (`expected_escalation: False`).
+- **Why It Failed**: The classifier prompt emphasized specific tracking numbers and order IDs for `ORDER_STATUS`. Because this query requested general regional delivery hours without referencing an order ID, the model fell back to `OTHER`, leading to an unnecessary false-positive escalation.
+
+### Case 3: Silent Account Takeover Alert / False Negative (Example ID 65)
+- **Customer Message**: *"I received an email stating my password was changed, but I did not do it!"*
+- **Agent Action**: Classified as `ACCOUNT_ISSUE` (0.96 confidence). Drafted standard password reset steps. Escalation: `False` (`reason: None`).
+- **Expected Action**: Immediate human escalation (`expected_escalation: True`).
+- **Why It Failed**: The fast rule-based escalation filter looks for explicit keywords like `"lawyer"`, `"fraud"`, `"police"`, and `"stolen"`. It lacked semantic detection for unauthorized account credential modifications ("did not do it"), and the high confidence score (0.96) bypassed the secondary borderline LLM check.
+
+### Case 4: Delivery Attempt Dispute vs. Status Tracking (Example ID 87)
+- **Customer Message**: *"Driver claimed an attempted delivery at 2 PM, but I was home all day and nobody rang the bell!"*
+- **Agent Action**: Classified as `ORDER_STATUS` with 0.92 confidence. Drafted generic status tracking advice. Escalation: `False`.
+- **Expected Action**: Intent `SHIPPING_DELAY` / `GENERAL_COMPLAINT`.
+- **Why It Failed**: Semantic confusion between carrier event terminology ("attempted delivery") and customer grievance. The classifier interpreted the query as an inquiry about shipment progress rather than a dispute regarding a falsified delivery attempt scan.
+
+### Case 5: Perishable Goods Spoilage Blindspot (Example ID 90)
+- **Customer Message**: *"My perishable food items are delayed by 3 days, they will spoil before arrival."*
+- **Agent Action**: Classified as `SHIPPING_DELAY` (0.97 confidence). Drafted standard shipping delay apology. Escalation: `False`.
+- **Expected Action**: Urgent human escalation (`expected_escalation: True`) to cancel transit and issue credit.
+- **Why It Failed**: The rule engine has no entity awareness for perishable goods or compounding economic loss over time. Because the message contained neither profanity nor legal threats, and confidence was high (0.97), it failed to escalate.
 
 ---
 
@@ -263,6 +326,23 @@ python -m eval.harness
 - **Free-Tier Rate Limits**: Groq's free tier imposes 8,000 tokens-per-minute limits. Autocw mitigates this using compact prompts and disk caching, but high-throughput enterprise deployments should utilize dedicated LPU endpoints.
 - **Escalation Recall Trade-Off**: The current heuristic rules favor precision to avoid overwhelming human support agents. Fine-tuning an escalation-specific binary classifier can further suppress the False Negative Rate.
 - **Language Scope**: Thread extraction and retrieval indexing currently target English customer interactions.
+
+---
+
+## "One More Week" Roadmap
+
+If allocated an additional engineering sprint, the top 5 priority improvements are:
+
+1. **Fix Train/Test Leakage in Simple ML Baseline**:
+   Re-train the baseline `TfidfVectorizer` and `LogisticRegression` models on a dedicated, non-overlapping partition of the 7,500 reconstructed conversations, evaluating on a strictly held-out test split.
+2. **Dedicated Binary Escalation Classifier**:
+   Replace the rule-based keyword and confidence heuristics with a fine-tuned lightweight sequence classifier (or gradient-boosted tree with semantic feature extraction) trained on oversampled high-severity customer escalations.
+3. **Multi-Turn Conversational Memory**:
+   Extend the drafter and classifier to ingest preceding turns from `conversations.jsonl`, providing conversational context rather than evaluating isolated single customer messages.
+4. **Empirical Confidence Calibration**:
+   Apply Platt Scaling or Temperature Scaling to raw model outputs to produce well-calibrated posterior probabilities, mitigating overconfident misclassifications.
+5. **Human Re-Labelling & Inter-Annotator Agreement**:
+   Conduct double-blind human annotation on a 50-example subset of the golden evaluation set to compute Cohen's Kappa ($\kappa$) and remove circular model-evaluated dependencies.
 
 ---
 
