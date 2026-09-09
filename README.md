@@ -331,18 +331,27 @@ python -m eval.harness
 
 ## "One More Week" Roadmap
 
-If allocated an additional engineering sprint, the top 5 priority improvements are:
+If allocated an additional engineering sprint, here are the 5 highest-leverage architectural extensions designed to build directly on top of the existing pipeline:
 
-1. **Fix Train/Test Leakage in Simple ML Baseline**:
-   Re-train the baseline `TfidfVectorizer` and `LogisticRegression` models on a dedicated, non-overlapping partition of the 7,500 reconstructed conversations, evaluating on a strictly held-out test split.
-2. **Dedicated Binary Escalation Classifier**:
-   Replace the rule-based keyword and confidence heuristics with a fine-tuned lightweight sequence classifier (or gradient-boosted tree with semantic feature extraction) trained on oversampled high-severity customer escalations.
-3. **Multi-Turn Conversational Memory**:
-   Extend the drafter and classifier to ingest preceding turns from `conversations.jsonl`, providing conversational context rather than evaluating isolated single customer messages.
-4. **Empirical Confidence Calibration**:
-   Apply Platt Scaling or Temperature Scaling to raw model outputs to produce well-calibrated posterior probabilities, mitigating overconfident misclassifications.
-5. **Human Re-Labelling & Inter-Annotator Agreement**:
-   Conduct double-blind human annotation on a 50-example subset of the golden evaluation set to compute Cohen's Kappa ($\kappa$) and remove circular model-evaluated dependencies.
+### 1. Multi-Brand Policy Partitioning & Dynamic Persona Switching
+- **Motivation**: `twcs.csv` contains over 100 enterprise brands (`AppleSupport`, `Delta`, `SpotifyCares`, `Uber_Support`), but the current pipeline is hardcoded to `AmazonHelp`.
+- **Engineering Task**: Refactor `src/data/pipeline.py` to generate partitioned vector indices (`data/processed/{brand_id}_reply_index.npz`) and parameterized brand taxonomies (`intents_{brand_id}.json`). Extend `process_message(text, brand_id="Delta")` to dynamically route embeddings and inject brand-specific policy constraints (e.g., airline baggage claims vs digital subscription refunds vs hardware warranty returns) into the Groq RAG drafting context.
+
+### 2. Active Learning Feedback Loop from Human Agent Overrides
+- **Motivation**: Real-world support systems continually improve from frontline agent corrections rather than static offline golden sets.
+- **Engineering Task**: Implement an audit feedback endpoint `log_agent_correction(query, edited_reply, true_intent)` in `src/utils/feedback.py`. When a human supervisor overrides a bot classification or edits a drafted response, store the tuple in an append-only JSONL log (`data/cache/human_corrections.jsonl`). Dynamically inject the top-3 most recent human corrections as high-priority few-shot exemplars in `src/classifier/classify.py`, and incrementally append corrected `(query, edited_reply)` pairs into the MiniLM vector index via lightweight in-memory NumPy concatenations without rebuilding the full index.
+
+### 3. Out-of-Distribution (OOD) Anomaly Detection for Emerging Crisis Spikes
+- **Motivation**: Currently, novel inquiries simply land in `OTHER`. When a catastrophic event occurs (e.g., global cloud outage, product recall, payment gateway downtime), hundreds of unfamiliar queries flood the queue simultaneously.
+- **Engineering Task**: Build an embedding distance anomaly detector in `src/intents/anomaly.py`. Compute cosine distance between incoming query vectors and pre-calculated intent cluster centroids ($d = 1 - \cos(\mathbf{q}, \mathbf{c}_k)$). If $d > \tau_{\text{novel}}$ across $\ge 15$ queries within a rolling 30-minute window, trigger an online DBSCAN clustering pass over the unclassified buffer. Automatically extract key phrase n-grams and fire an urgent operational alert webhook (e.g., *"Emerging incident detected: 42 customers reporting checkout error 504"*).
+
+### 4. Deterministic Function Calling for Order & Tracking API State Grounding
+- **Motivation**: The RAG drafter generates plausible language based on historical replies, but cannot verify whether an actual order `#112-9876543` exists, is in transit, or has been delivered.
+- **Engineering Task**: Equip `src/drafter/draft.py` with Groq tool-use / function calling definitions (`lookup_order_status`, `check_carrier_telemetry`, `calculate_refund_eligibility`). When regex extracts an order ID (`#\d{3}-\d{7}`) or carrier tracking code (`TBA\d+`), intercept the LLM generation loop to execute deterministic lookups against a mock logistics SQLite/JSON database. Inject the verified live shipment telemetry (e.g., *"Package left Oakland facility at 2:14 PM, ETA today 6:30 PM"*) directly into the final draft prompt, eliminating speculative hallucinations.
+
+### 5. Human-in-the-Loop Slack / Discord Triage Bot Cockpit
+- **Motivation**: Support agents need a fast, collaborative triage interface rather than a terminal CLI.
+- **Engineering Task**: Build a Slack Bolt integration in `src/integrations/slack_triage.py`. Incoming messages are processed through `process_message()`. If `escalate: False`, post an interactive Slack message block with the classified intent, confidence badge, and drafted reply alongside `"Approve & Send"`, `"Edit Reply"`, and `"Escalate to Tier 2"` buttons. If `escalate: True`, immediately route an alert to `#support-escalations` with the flagged legal/fraud keywords highlighted, pinging on-call support leads and providing a direct customer reply thread.
 
 ---
 
