@@ -1,0 +1,6 @@
+=== BERTopic Cluster Discovery Report ===
+
+Cluster 0 (count=2292): to, the, my, and, it, is, for, you
+Cluster 1 (count=244): amazon, amazonプライム, ミニスーファミ, アマゾン, これは, ありがとう, bar, music
+Cluster 2 (count=245): de, que, el, la, me, no, un, en
+Cluster 3 (count=219): de, est, le, je, pas, un, et, nicht

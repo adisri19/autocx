@@ -1,0 +1,145 @@
+{
+  "ORDER_STATUS": {
+    "description": "Inquiries regarding the current status, tracking details, shipment progress, or delivery date of an order.",
+    "keywords": [
+      "track",
+      "tracking",
+      "where is",
+      "order status",
+      "shipped",
+      "delivery date",
+      "package location"
+    ],
+    "examples": [
+      "Where is my package? Tracking says it has not moved.",
+      "Can you tell me if order #123-4567 has shipped yet?",
+      "I need an update on my delivery tracking.",
+      "When will my order arrive? It was supposed to be here by now."
+    ]
+  },
+  "REFUND_REQUEST": {
+    "description": "Requests for refunds, return processing, billing discrepancies, double charges, or money back.",
+    "keywords": [
+      "refund",
+      "money back",
+      "charged twice",
+      "overcharged",
+      "return",
+      "cancelled order charge"
+    ],
+    "examples": [
+      "I returned my item last week and still have not received my refund.",
+      "I was charged twice for the same purchase, please refund the second charge.",
+      "I cancelled my order, how long until my money is back in my account?",
+      "Can I get a full refund for this defective product?"
+    ]
+  },
+  "ACCOUNT_ISSUE": {
+    "description": "Problems with logging in, password reset, account lock, verification codes, OTP, or email updates.",
+    "keywords": [
+      "login",
+      "password",
+      "locked out",
+      "account",
+      "otp",
+      "verification code",
+      "sign in",
+      "reset"
+    ],
+    "examples": [
+      "I am locked out of my account and cannot reset my password.",
+      "I am not receiving the OTP code on my mobile phone to verify my account.",
+      "Someone hacked my account and changed the email address.",
+      "How do I update the email associated with my profile?"
+    ]
+  },
+  "SHIPPING_DELAY": {
+    "description": "Complaints specifically regarding late delivery, missed delivery windows, transit delays, or carrier hold-ups.",
+    "keywords": [
+      "late",
+      "delayed",
+      "delay",
+      "not arrived",
+      "missed delivery",
+      "overdue",
+      "past delivery date"
+    ],
+    "examples": [
+      "My guaranteed delivery date was yesterday and my package still is not here.",
+      "Why is my delivery constantly getting delayed?",
+      "It has been over two weeks and the package is running severely late.",
+      "Carrier missed the delivery appointment."
+    ]
+  },
+  "GENERAL_COMPLAINT": {
+    "description": "General dissatisfaction, damaged goods on arrival, rude service experience, or poor product quality.",
+    "keywords": [
+      "damaged",
+      "broken",
+      "unhappy",
+      "terrible service",
+      "disappointed",
+      "poor quality",
+      "complaint"
+    ],
+    "examples": [
+      "The box was completely crushed and the item inside is shattered.",
+      "Your representative was extremely unhelpful and rude.",
+      "This is the worst customer service experience I have ever had.",
+      "Very disappointed with the quality of this item."
+    ]
+  },
+  "TECHNICAL_ISSUE": {
+    "description": "Website or mobile application bugs, checkout errors, payment gateway failures, or broken links.",
+    "keywords": [
+      "app crash",
+      "error code",
+      "website down",
+      "checkout failed",
+      "payment error",
+      "glitch",
+      "bug"
+    ],
+    "examples": [
+      "The app keeps crashing whenever I click on my cart.",
+      "I am getting error code 500 when attempting to complete checkout.",
+      "The website payment page will not load my payment options.",
+      "Your search button is completely broken on iOS."
+    ]
+  },
+  "COMPLIMENT": {
+    "description": "Expressions of gratitude, satisfaction, positive feedback, or compliments on helpful service.",
+    "keywords": [
+      "thank you",
+      "thanks",
+      "great service",
+      "appreciate",
+      "awesome",
+      "kudos",
+      "wonderful"
+    ],
+    "examples": [
+      "Thank you so much for resolving my issue so quickly!",
+      "Great service as always, really appreciate the prompt assistance.",
+      "The delivery driver was so polite and helpful, kudos to the team!",
+      "Thanks a lot, that worked perfectly."
+    ]
+  },
+  "OTHER": {
+    "description": "Messages that are ambiguous, unclassifiable, multi-topic, irrelevant, or spam.",
+    "keywords": [
+      "misc",
+      "unclear",
+      "random",
+      "hello",
+      "info",
+      "other"
+    ],
+    "examples": [
+      "Hello there.",
+      "Can you tell me if you sell spaceships?",
+      "I need info about your corporate history.",
+      "Check this out!"
+    ]
+  }
+}
