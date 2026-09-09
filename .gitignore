@@ -1,0 +1,25 @@
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Secrets
+.env
+
+# Byte-compiled / optimized / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Data
+data/raw/
+data/cache/
+data/processed/*.npz
+data/processed/*.pkl
+data/processed/*.jsonl
+
+# OS files
+.DS_Store
+Thumbs.db
