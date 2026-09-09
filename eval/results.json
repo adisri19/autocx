@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "total_examples": 200,
+    "judge_sample_size": 50,
+    "model": "openai/gpt-oss-20b"
+  },
+  "intent_classification": {
+    "autocw": {
+      "accuracy": 0.955,
+      "macro_precision": 0.9579,
+      "macro_recall": 0.955,
+      "macro_f1": 0.9554,
+      "per_class": {
+        "ORDER_STATUS": {
+          "precision": 0.92,
+          "recall": 0.92,
+          "f1": 0.92,
+          "support": 25
+        },
+        "REFUND_REQUEST": {
+          "precision": 1.0,
+          "recall": 0.96,
+          "f1": 0.98,
+          "support": 25
+        },
+        "ACCOUNT_ISSUE": {
+          "precision": 1.0,
+          "recall": 0.96,
+          "f1": 0.98,
+          "support": 25
+        },
+        "SHIPPING_DELAY": {
+          "precision": 1.0,
+          "recall": 0.92,
+          "f1": 0.958,
+          "support": 25
+        },
+        "GENERAL_COMPLAINT": {
+          "precision": 0.958,
+          "recall": 0.92,
+          "f1": 0.939,
+          "support": 25
+        },
+        "TECHNICAL_ISSUE": {
+          "precision": 0.862,
+          "recall": 1.0,
+          "f1": 0.926,
+          "support": 25
+        },
+        "COMPLIMENT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "OTHER": {
+          "precision": 0.923,
+          "recall": 0.96,
+          "f1": 0.941,
+          "support": 25
+        }
+      }
+    },
+    "simple_ml": {
+      "accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "macro_f1": 1.0,
+      "per_class": {
+        "ORDER_STATUS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "REFUND_REQUEST": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "ACCOUNT_ISSUE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "SHIPPING_DELAY": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "GENERAL_COMPLAINT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "TECHNICAL_ISSUE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "COMPLIMENT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "OTHER": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        }
+      }
+    },
+    "trivial": {
+      "accuracy": 0.125,
+      "macro_precision": 0.0156,
+      "macro_recall": 0.125,
+      "macro_f1": 0.0278,
+      "per_class": {
+        "ORDER_STATUS": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "f1": 0.222,
+          "support": 25
+        },
+        "REFUND_REQUEST": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 25
+        },
+        "ACCOUNT_ISSUE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 25
+        },
+        "SHIPPING_DELAY": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 25
+        },
+        "GENERAL_COMPLAINT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 25
+        },
+        "TECHNICAL_ISSUE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 25
+        },
+        "COMPLIMENT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 25
+        },
+        "OTHER": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 25
+        }
+      }
+    }
+  },
+  "escalation_detection": {
+    "autocw": {
+      "accuracy": 0.79,
+      "precision": 0.129,
+      "recall": 0.2105,
+      "f1": 0.16,
+      "false_negative_rate": 0.7895,
+      "confusion_matrix": {
+        "tn": 154,
+        "fp": 27,
+        "fn": 15,
+        "tp": 4
+      }
+    },
+    "simple_ml": {
+      "accuracy": 0.795,
+      "precision": 0.1333,
+      "recall": 0.2105,
+      "f1": 0.1633,
+      "false_negative_rate": 0.7895,
+      "confusion_matrix": {
+        "tn": 155,
+        "fp": 26,
+        "fn": 15,
+        "tp": 4
+      }
+    },
+    "trivial": {
+      "accuracy": 0.905,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "false_negative_rate": 1.0,
+      "confusion_matrix": {
+        "tn": 181,
+        "fp": 0,
+        "fn": 19,
+        "tp": 0
+      }
+    }
+  },
+  "reply_quality": {
+    "autocw": {
+      "relevance": 4.64,
+      "tone": 4.78,
+      "groundedness": 4.62,
+      "overall": 4.64
+    },
+    "simple_ml": {
+      "relevance": 1.98,
+      "tone": 2.74,
+      "groundedness": 1.86,
+      "overall": 2.05
+    },
+    "trivial": {
+      "relevance": 1.72,
+      "tone": 3.1,
+      "groundedness": 1.65,
+      "overall": 1.91
+    }
+  },
+  "human_judge_agreement": {
+    "sample_size": 30,
+    "pearson_r": 0.4848,
+    "p_value": 0.006631
+  }
+}
