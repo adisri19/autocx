@@ -20,7 +20,7 @@ To establish precise operational boundaries, Autocw is intentionally scoped as f
 | **Conversational Context** | Single-Inbound Query Triage | Processes single inbound messages; does not maintain stateful multi-turn session memory across successive user tweets. |
 | **Response Generation** | Synchronous Structured JSON | Returns formatted, parsed JSON with drafts, intents, confidence, and escalation tags; not a streaming SSE/WebSocket service. |
 | **Vector Retrieval** | CPU-Only NumPy Array Archive | Performs dot-product similarity against pre-computed `.npz` float32 embeddings; requires zero external vector DB servers. |
-| **Deployment Target** | Local Reproducible Developer Harness | Engineered to execute end-to-end (data pipeline, indexing, evaluation) on a standard laptop in under 5 minutes without a GPU. |
+| **Deployment Target** | Local Reproducible Developer Harness | under 15 minutes on first run (LLM batch classification ~8 min via Groq API); under 2 minutes on subsequent runs via disk cache hits |
 
 ---
 
@@ -205,6 +205,42 @@ A naive glance at the escalation metrics shows Autocw at 79.0% accuracy, while t
   1. *Subtle / Implicit Threats*: When a customer writes *"I received an email stating my password was changed, but I did not do it!"*, they are experiencing a hostile account takeover. But because they did not use words like "police", "lawyer", or "fraud", the fast regex rules did not fire.
   2. *High Classification Confidence*: The intent classifier assigned this query to `ACCOUNT_ISSUE` with **0.96 confidence**. Because 0.96 exceeds the borderline threshold (`0.75`), the secondary LLM supervisor was never triggered, allowing the security breach to slip through as a routine inquiry.
   3. *Domain Blindspots*: Queries involving spoiled perishable food, economic loss from missed work shifts, or damaged baby formula do not trigger generic profanity or legal filters, yet represent severe customer churn and liability risks.
+
+---
+
+## Failure Analysis
+
+Analysis of the 200-example evaluation run on `eval/golden_set.jsonl` revealed 9 intent misclassifications and 15 missed escalations. Below are 5 real failure cases extracted directly from the benchmark dataset:
+
+**Failure Mode 1: Dual-Intent Financial Precedence Collision**
+- **Real message**: "Item arrived damaged, do I have to send it back to get a full refund?"
+- **Agent predicted**: GENERAL_COMPLAINT (confidence: 0.99)
+- **Expected**: REFUND_REQUEST
+- **Why it failed**: The token "damaged" heavily biased the LLM toward defect reporting, overriding the triage guideline where actionable monetary reimbursement requests must supersede general complaints.
+
+**Failure Mode 2: Carrier Logistics Jargon vs. Customer Grievance**
+- **Real message**: "Driver claimed an attempted delivery at 2 PM, but I was home all day and nobody rang the bell!"
+- **Agent predicted**: ORDER_STATUS (confidence: 0.92)
+- **Expected**: SHIPPING_DELAY
+- **Why it failed**: The presence of courier status terminology ("attempted delivery") caused the classifier to treat this as a tracking check rather than a delivery dispute over a missed delivery window.
+
+**Failure Mode 3: Authentication Mechanism Misidentified as Browser Bug**
+- **Real message**: "My passkey is not working on my Mac browser."
+- **Agent predicted**: TECHNICAL_ISSUE (confidence: 0.92)
+- **Expected**: ACCOUNT_ISSUE
+- **Why it failed**: The terms "Mac browser" and "not working" triggered the software bug detector, failing to recognize that passkeys are modern authentication credentials governed by account login protocols.
+
+**Failure Mode 4: General Route Inquiries Without Tracking Numbers Falling to OTHER**
+- **Real message**: "What time does your delivery driver usually deliver to zip code 94107?"
+- **Agent predicted**: OTHER (confidence: 0.92)
+- **Expected**: ORDER_STATUS
+- **Why it failed**: Because the prompt's few-shot examples for ORDER_STATUS prominently feature order numbers and tracking IDs, a general logistical question about delivery timing was deemed unclassifiable and needlessly escalated.
+
+**Failure Mode 5: Silent Account Takeover Bypassing Escalation**
+- **Real message**: "I received an email stating my password was changed, but I did not do it!"
+- **Agent predicted**: ACCOUNT_ISSUE (confidence: 0.99)
+- **Expected**: ACCOUNT_ISSUE
+- **Why it failed**: High classification confidence (0.99) bypassed the borderline tier and the text lacked overt keywords like "fraud" or "police", allowing an unauthorized account takeover to pass through without human escalation.
 
 ---
 
